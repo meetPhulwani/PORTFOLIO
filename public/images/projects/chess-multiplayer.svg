@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="Chess Multiplayer preview placeholder">
+  <rect width="1600" height="1000" fill="#111111"/>
+  <rect x="120" y="120" width="760" height="760" fill="#171717" stroke="rgba(255,255,255,0.08)"/>
+  <g fill="#090909" stroke="rgba(255,255,255,0.06)">
+    <rect x="120" y="120" width="95" height="95"/><rect x="310" y="120" width="95" height="95"/><rect x="500" y="120" width="95" height="95"/><rect x="690" y="120" width="95" height="95"/>
+    <rect x="215" y="215" width="95" height="95"/><rect x="405" y="215" width="95" height="95"/><rect x="595" y="215" width="95" height="95"/><rect x="785" y="215" width="95" height="95"/>
+    <rect x="120" y="310" width="95" height="95"/><rect x="310" y="310" width="95" height="95"/><rect x="500" y="310" width="95" height="95"/><rect x="690" y="310" width="95" height="95"/>
+    <rect x="215" y="405" width="95" height="95"/><rect x="405" y="405" width="95" height="95"/><rect x="595" y="405" width="95" height="95"/><rect x="785" y="405" width="95" height="95"/>
+    <rect x="120" y="500" width="95" height="95"/><rect x="310" y="500" width="95" height="95"/><rect x="500" y="500" width="95" height="95"/><rect x="690" y="500" width="95" height="95"/>
+    <rect x="215" y="595" width="95" height="95"/><rect x="405" y="595" width="95" height="95"/><rect x="595" y="595" width="95" height="95"/><rect x="785" y="595" width="95" height="95"/>
+    <rect x="120" y="690" width="95" height="95"/><rect x="310" y="690" width="95" height="95"/><rect x="500" y="690" width="95" height="95"/><rect x="690" y="690" width="95" height="95"/>
+    <rect x="215" y="785" width="95" height="95"/><rect x="405" y="785" width="95" height="95"/><rect x="595" y="785" width="95" height="95"/><rect x="785" y="785" width="95" height="95"/>
+  </g>
+  <text x="1080" y="460" fill="#FAFAFA" font-family="Bebas Neue, sans-serif" font-size="72" letter-spacing="4">CHESS</text>
+  <text x="1080" y="540" fill="#E11D2E" font-family="Bebas Neue, sans-serif" font-size="72" letter-spacing="4">MULTIPLAYER</text>
+  <text x="1080" y="620" fill="#A0A0A0" font-family="Inter, sans-serif" font-size="24">Realtime · Socket.IO · React</text>
+</svg>

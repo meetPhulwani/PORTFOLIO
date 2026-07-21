@@ -1,0 +1,152 @@
+@import 'tailwindcss';
+
+/*
+  Design tokens — single source of truth for color, type, and radius.
+  Mapped into Tailwind via @theme (Tailwind CSS v4).
+*/
+@theme {
+  --color-background: #090909;
+  --color-secondary: #0c0c0c;
+  --color-card: rgb(255 255 255 / 0.025);
+  --color-foreground: #fafafa;
+  --color-muted: #a0a0a0;
+  --color-accent: #e11d2e;
+  --color-success: #22c55e;
+  --color-border: rgb(255 255 255 / 0.06);
+
+  --font-display: 'Bebas Neue', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --radius-card: 1.25rem; /* 20px — within 18–24px spec range */
+  --radius-lg: 1.5rem; /* 24px */
+  --radius-md: 1.125rem; /* 18px */
+
+  --shadow-soft: 0 18px 50px rgb(0 0 0 / 0.35);
+
+  --spacing-section-sm: 4rem;
+  --spacing-section-md: 6rem;
+  --spacing-section-lg: 8rem;
+  --spacing-container-x: 1.25rem;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes terminal-caret-blink {
+  0%,
+  49% {
+    caret-color: var(--color-accent);
+  }
+  50%,
+  100% {
+    caret-color: transparent;
+  }
+}
+
+.terminal-input {
+  caret-color: var(--color-accent);
+  animation: terminal-caret-blink 1.05s step-end infinite;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: auto; /* Lenis owns smooth scrolling */
+    scroll-padding-top: 6rem; /* sticky navbar clearance for hash / native fallbacks */
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+    color: var(--color-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Lenis recommended root class hooks */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Custom cursor — hide system cursor on capable desktops only. */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+/* Reliable skip-link reveal (independent of utility variant support). */
+.skip-link:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 120;
+  display: inline-flex;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: var(--color-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: var(--shadow-soft);
+}

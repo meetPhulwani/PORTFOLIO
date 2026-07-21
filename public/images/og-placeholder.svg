@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Meet Phulwani portfolio social preview">
+  <rect width="1200" height="630" fill="#090909"/>
+  <rect x="80" y="80" width="1040" height="470" rx="24" fill="#111111" stroke="rgba(255,255,255,0.08)"/>
+  <text x="120" y="260" fill="#E11D2E" font-family="Bebas Neue, sans-serif" font-size="42" letter-spacing="6">FULL STACK DEVELOPER</text>
+  <text x="120" y="360" fill="#FAFAFA" font-family="Bebas Neue, sans-serif" font-size="96" letter-spacing="2">MEET PHULWANI</text>
+  <text x="120" y="440" fill="#A0A0A0" font-family="Inter, sans-serif" font-size="28">Java � MERN � AI � Modern Web</text>
+</svg>

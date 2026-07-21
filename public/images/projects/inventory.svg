@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-label="Inventory Management System preview placeholder">
+  <rect width="1280" height="800" fill="#111111"/>
+  <rect x="80" y="80" width="1120" height="640" rx="24" fill="#171717" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="120" y="140" width="280" height="520" rx="18" fill="#090909" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="440" y="140" width="700" height="80" rx="14" fill="#090909" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="440" y="250" width="700" height="80" rx="14" fill="#090909" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="440" y="360" width="700" height="80" rx="14" fill="#090909" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="440" y="470" width="700" height="80" rx="14" fill="#090909" stroke="rgba(255,255,255,0.08)"/>
+  <text x="150" y="220" fill="#E11D2E" font-family="Bebas Neue, sans-serif" font-size="36">INVENTORY</text>
+  <text x="450" y="640" fill="#A0A0A0" font-family="Inter, sans-serif" font-size="20">Stock · Products · Operations</text>
+</svg>

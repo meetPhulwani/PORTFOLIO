@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="MERN E-Commerce Platform preview placeholder">
+  <rect width="1600" height="1000" fill="#111111"/>
+  <rect x="80" y="80" width="1440" height="840" rx="24" fill="#171717" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="120" y="140" width="420" height="720" rx="18" fill="#090909" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="580" y="140" width="880" height="100" rx="14" fill="#090909" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="580" y="280" width="420" height="280" rx="14" fill="#090909" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="1040" y="280" width="420" height="280" rx="14" fill="#090909" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="580" y="600" width="880" height="260" rx="14" fill="#090909" stroke="rgba(255,255,255,0.08)"/>
+  <text x="160" y="240" fill="#E11D2E" font-family="Bebas Neue, sans-serif" font-size="42">SUBTL</text>
+  <text x="160" y="300" fill="#A0A0A0" font-family="Inter, sans-serif" font-size="22">MERN Store</text>
+  <text x="620" y="820" fill="#A0A0A0" font-family="Inter, sans-serif" font-size="22">Catalog � Cart � Orders � JWT</text>
+</svg>
