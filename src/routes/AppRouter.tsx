@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { HomePage } from '@/pages/HomePage'
+import { LegacySectionRedirect } from '@/routes/LegacySectionRedirect'
 
 const NotFoundPage = lazy(async () => {
   const module = await import('@/pages/NotFoundPage')
@@ -10,7 +11,7 @@ const NotFoundPage = lazy(async () => {
 
 /**
  * Application route table.
- * Home is eager; 404 is code-split. Case-study routes removed.
+ * Home is the only portfolio surface; section paths redirect to `/#section`.
  */
 export function AppRouter() {
   return (
@@ -18,6 +19,7 @@ export function AppRouter() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/404" element={<NotFoundPage />} />
+        <Route path="/:sectionId" element={<LegacySectionRedirect />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
     </Suspense>

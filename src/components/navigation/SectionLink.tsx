@@ -1,8 +1,8 @@
 import type { AnchorHTMLAttributes, MouseEvent } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-import { scrollToSectionId } from '@/lib/scroll'
 import { cn } from '@/lib/cn'
+import { scrollToSectionId } from '@/lib/scroll'
 import { useLenis } from '@/providers/lenisContext'
 
 type SectionLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
@@ -11,7 +11,7 @@ type SectionLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & 
 }
 
 /**
- * In-page section link with sticky-nav offset and cross-route support.
+ * In-page section link — hash scroll only, never path routes like `/experience`.
  */
 export function SectionLink({
   sectionId,
@@ -24,25 +24,31 @@ export function SectionLink({
   const lenis = useLenis()
   const navigate = useNavigate()
   const location = useLocation()
+  // Absolute home + hash so a failed JS fallback never becomes `/sectionId`.
   const targetHref = href ?? `/#${sectionId}`
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    onClick?.(event)
-    if (event.defaultPrevented) return
+    // Always stop document navigation first (SPA in-page scroll only).
     event.preventDefault()
+    event.stopPropagation()
+
+    onClick?.(event)
 
     const go = () => {
       void scrollToSectionId(sectionId, lenis)
     }
 
     if (location.pathname !== '/') {
-      void navigate(`/#${sectionId}`)
-      window.setTimeout(go, 80)
+      void navigate(
+        { pathname: '/', hash: `#${sectionId}` },
+        { replace: true },
+      )
+      window.setTimeout(go, 100)
       return
     }
 
-    go()
     window.history.replaceState(null, '', `/#${sectionId}`)
+    go()
   }
 
   return (
