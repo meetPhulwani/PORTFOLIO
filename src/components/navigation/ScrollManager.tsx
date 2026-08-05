@@ -16,7 +16,7 @@ export function ScrollManager() {
     if (!location.hash) return
     const sectionId = location.hash.replace('#', '')
     const timer = window.setTimeout(() => {
-      scrollToSectionId(sectionId, lenis)
+      void scrollToSectionId(sectionId, lenis)
     }, 80)
     return () => window.clearTimeout(timer)
   }, [location.hash, lenis])

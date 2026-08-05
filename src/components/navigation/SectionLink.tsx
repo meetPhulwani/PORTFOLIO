@@ -31,7 +31,9 @@ export function SectionLink({
     if (event.defaultPrevented) return
     event.preventDefault()
 
-    const go = () => scrollToSectionId(sectionId, lenis)
+    const go = () => {
+      void scrollToSectionId(sectionId, lenis)
+    }
 
     if (location.pathname !== '/') {
       void navigate(`/#${sectionId}`)

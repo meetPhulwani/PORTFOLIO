@@ -51,8 +51,6 @@ Replace placeholders marked in those files before production launch.
 - `public/images/projects/*.svg`
 - `public/images/og-placeholder.svg` (prefer a 1200×630 PNG/JPG for social crawlers)
 - `public/resume/Meet-Phulwani-Resume.pdf`
-- Favicon at `public/favicon.svg`
-
 ## SEO defaults
 
 Update `src/data/seo.ts` and keep `index.html` / `public/robots.txt` / `public/sitemap.xml` URLs aligned with your production domain.

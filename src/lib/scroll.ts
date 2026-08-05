@@ -1,5 +1,7 @@
 import type Lenis from 'lenis'
 
+import { ensureSectionElement } from '@/lib/sectionLoader'
+
 /**
  * Sticky nav offset for in-page targeting.
  * Matches `h-16` / `md:h-20` plus a small breathing gap.
@@ -8,16 +10,19 @@ export const SECTION_SCROLL_OFFSET = -96
 
 /**
  * Smoothly scrolls to a section id, preferring Lenis when available.
+ * Force-mounts lazy sections first so navbar links work before deep scroll.
  */
-export function scrollToSectionId(
+export async function scrollToSectionId(
   sectionId: string,
   lenis: Lenis | null,
   offset: number = SECTION_SCROLL_OFFSET,
-): void {
-  const target = document.getElementById(sectionId)
+): Promise<void> {
+  const target = await ensureSectionElement(sectionId)
   if (!target) return
 
   if (lenis) {
+    // Ensure programmatic nav works even if a modal just released Lenis.stop().
+    lenis.start()
     lenis.scrollTo(target, { offset, duration: 1.15 })
     return
   }

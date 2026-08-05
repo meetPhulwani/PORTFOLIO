@@ -30,7 +30,7 @@ export function HeroContent({
   const lenis = useLenis()
 
   const handleViewProjects = () => {
-    scrollToSectionId(SECTION_IDS.projects, lenis)
+    void scrollToSectionId(SECTION_IDS.projects, lenis)
   }
 
   return (

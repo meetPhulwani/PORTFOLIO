@@ -173,5 +173,5 @@ export function runTerminalCommand(raw: string): TerminalAction {
 
 /** Scrolls to contact after the terminal has closed. */
 export function scrollToContact(lenis: Lenis | null): void {
-  scrollToSectionId(SECTION_IDS.contact, lenis)
+  void scrollToSectionId(SECTION_IDS.contact, lenis)
 }

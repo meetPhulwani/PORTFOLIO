@@ -1,5 +1,6 @@
 import { Seo } from '@/components/seo/Seo'
 import { LazySection } from '@/components/layout/LazySection'
+import { SECTION_IDS } from '@/constants/sectionIds'
 import { Hero } from '@/sections/Hero'
 
 const loadAbout = () =>
@@ -37,20 +38,35 @@ export function HomePage() {
       <Seo path="/" />
       <main id="main" aria-label="Home" className="overflow-x-hidden">
         <Hero />
-        <LazySection loader={loadAbout} minHeightClassName="min-h-[36rem]" />
+        <LazySection
+          sectionId={SECTION_IDS.about}
+          loader={loadAbout}
+          minHeightClassName="min-h-[36rem]"
+        />
         <LazySection
           loader={loadTechMarquee}
           minHeightClassName="min-h-[6rem]"
         />
-        <LazySection loader={loadSkills} />
+        <LazySection sectionId={SECTION_IDS.skills} loader={loadSkills} />
         <LazySection
+          sectionId={SECTION_IDS.projects}
           loader={loadProjects}
           minHeightClassName="min-h-[40rem]"
         />
-        <LazySection loader={loadExperience} />
-        <LazySection loader={loadEducation} />
-        <LazySection loader={loadCodingProfiles} />
         <LazySection
+          sectionId={SECTION_IDS.experience}
+          loader={loadExperience}
+        />
+        <LazySection
+          sectionId={SECTION_IDS.education}
+          loader={loadEducation}
+        />
+        <LazySection
+          sectionId={SECTION_IDS.profiles}
+          loader={loadCodingProfiles}
+        />
+        <LazySection
+          sectionId={SECTION_IDS.contact}
           loader={loadContact}
           minHeightClassName="min-h-[36rem]"
         />

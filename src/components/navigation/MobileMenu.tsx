@@ -59,7 +59,8 @@ export function MobileMenu({
       {open ? (
         <motion.div
           ref={panelRef}
-          className="fixed inset-0 z-[70] flex flex-col bg-background px-6 pt-24 pb-10 md:hidden"
+          data-scroll-lock-allow
+          className="fixed inset-0 z-[70] flex flex-col overflow-y-auto overscroll-contain bg-background px-6 pt-24 pb-10 md:hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
