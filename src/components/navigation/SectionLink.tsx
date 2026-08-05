@@ -10,8 +10,7 @@ type SectionLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & 
 }
 
 /**
- * In-page section navigation only.
- * Uses same-document hash links (`#about`) — never path routes (`/about`).
+ * SPA in-page nav: prevent route changes, smooth-scroll to `#sectionId`.
  */
 export function SectionLink({
   sectionId,
@@ -23,32 +22,30 @@ export function SectionLink({
   const lenis = useLenis()
   const navigate = useNavigate()
   const location = useLocation()
-  const hashHref = `#${sectionId}`
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    // Block native navigation / full reload before anything else.
     event.preventDefault()
     onClick?.(event)
 
-    const scroll = () => {
-      window.history.replaceState(null, '', `/${hashHref}`)
+    const run = () => {
+      window.history.replaceState(null, '', `/#${sectionId}`)
       void scrollToSectionId(sectionId, lenis)
     }
 
-    // Off the home route (e.g. /404): return home, then scroll.
     if (location.pathname !== '/') {
       void navigate('/', { replace: true })
-      window.setTimeout(scroll, 100)
+      window.setTimeout(run, 120)
       return
     }
 
-    scroll()
+    // Let mobile menu unlock / Lenis restart before scrolling when closing overlay.
+    window.setTimeout(run, 0)
   }
 
   return (
     <a
       {...props}
-      href={hashHref}
+      href={`#${sectionId}`}
       className={cn(className)}
       onClick={handleClick}
     >
