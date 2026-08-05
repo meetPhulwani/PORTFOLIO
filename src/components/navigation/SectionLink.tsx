@@ -7,15 +7,14 @@ import { useLenis } from '@/providers/lenisContext'
 
 type SectionLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
   sectionId: string
-  href?: string
 }
 
 /**
- * In-page section link — hash scroll only, never path routes like `/experience`.
+ * In-page section navigation only.
+ * Uses same-document hash links (`#about`) — never path routes (`/about`).
  */
 export function SectionLink({
   sectionId,
-  href,
   className,
   onClick,
   children,
@@ -24,39 +23,34 @@ export function SectionLink({
   const lenis = useLenis()
   const navigate = useNavigate()
   const location = useLocation()
-  // Absolute home + hash so a failed JS fallback never becomes `/sectionId`.
-  const targetHref = href ?? `/#${sectionId}`
+  const hashHref = `#${sectionId}`
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    // Always stop document navigation first (SPA in-page scroll only).
+    // Block native navigation / full reload before anything else.
     event.preventDefault()
-    event.stopPropagation()
-
     onClick?.(event)
 
-    const go = () => {
+    const scroll = () => {
+      window.history.replaceState(null, '', `/${hashHref}`)
       void scrollToSectionId(sectionId, lenis)
     }
 
+    // Off the home route (e.g. /404): return home, then scroll.
     if (location.pathname !== '/') {
-      void navigate(
-        { pathname: '/', hash: `#${sectionId}` },
-        { replace: true },
-      )
-      window.setTimeout(go, 100)
+      void navigate('/', { replace: true })
+      window.setTimeout(scroll, 100)
       return
     }
 
-    window.history.replaceState(null, '', `/#${sectionId}`)
-    go()
+    scroll()
   }
 
   return (
     <a
-      href={targetHref}
+      {...props}
+      href={hashHref}
       className={cn(className)}
       onClick={handleClick}
-      {...props}
     >
       {children}
     </a>

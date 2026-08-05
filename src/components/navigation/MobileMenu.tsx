@@ -1,6 +1,6 @@
 ﻿import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 import { SectionLink } from '@/components/navigation/SectionLink'
@@ -8,6 +8,7 @@ import { BodyText } from '@/components/typography/BodyText'
 import { Heading } from '@/components/typography/Heading'
 import { buttonVariants } from '@/components/ui/buttonVariants'
 import { SocialIcon } from '@/components/ui/SocialIcon'
+import { SECTION_IDS } from '@/constants/sectionIds'
 import type { NavItem } from '@/data/navigation'
 import { profile } from '@/data/profile'
 import { getSocial } from '@/data/socials'
@@ -134,13 +135,13 @@ export function MobileMenu({
                 {profile.name}
               </BodyText>
             </div>
-            <Link
-              to="/"
+            <SectionLink
+              sectionId={SECTION_IDS.hero}
               onClick={onClose}
               className="font-display text-sm tracking-[0.2em] text-muted uppercase"
             >
               Home
-            </Link>
+            </SectionLink>
           </div>
         </motion.div>
       ) : null}
